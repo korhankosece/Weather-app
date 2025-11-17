@@ -1,12 +1,120 @@
-.current-weather {
-  padding: 2rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  background: white;
-  text-align: center;
+@use '../../shared/styles/theme' as *;
 
-  h2 {
-    margin-bottom: 1rem;
-    color: #333;
+.current-weather {
+  padding: 2.5rem;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  position: relative;
+  overflow: hidden;
+  color: $color-white;
+
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+  }
+
+  &__time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  &__location {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-white-80;
+    margin-bottom: 0.75rem;
+    text-transform: capitalize;
+  }
+
+  &__current-time {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  &__current-date {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+  }
+
+  &__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+  }
+
+  &__temperature {
+    font-size: 5rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  &__city {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    font-size: $font-size-lg;
+    color: $color-white-90;
+    text-transform: capitalize;
+    font-weight: $font-weight-medium;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  &__icon-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $color-white-30;
+    margin: 1.5rem 0;
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  &__detail-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__detail-label {
+    font-size: 0.625rem;
+    font-weight: $font-weight-medium;
+    color: $color-white-70;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__detail-value {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    line-height: 1.3;
   }
 }

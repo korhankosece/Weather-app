@@ -1,4 +1,59 @@
-<div class="current-weather">
-  <h2>Current Weather</h2>
-  <p>Dummy data will go here</p>
+<div class="current-weather" [style.background]="backgroundGradient()">
+  <div class="current-weather__main">
+    <div class="current-weather__time">
+      <div class="current-weather__location">{{ region() }}, {{ country() }}</div>
+      <div class="current-weather__current-time">{{ currentTime() }}</div>
+      <div class="current-weather__current-date">{{ currentDate() }}</div>
+    </div>
+
+    <div class="current-weather__center">
+      <div class="current-weather__city">{{ city() }}</div>
+      <div class="current-weather__temperature">{{ temperature() }}°c</div>
+      <div class="current-weather__description">{{ description() }}</div>
+    </div>
+
+    <div class="current-weather__icon">
+      <img 
+        [src]="'/images/icons/' + weatherIcon() + '_t@4x.png'" 
+        [alt]="description()"
+        class="current-weather__icon-img"
+      />
+    </div>
+  </div>
+
+  <div class="current-weather__divider"></div>
+  <div class="current-weather__details">
+    <div class="current-weather__detail-card">
+      <div class="current-weather__detail-label">Wind</div>
+      <div class="current-weather__detail-value">{{ windDirection() }}, gentle breeze</div>
+    </div>
+    <div class="current-weather__detail-card">
+      <div class="current-weather__detail-label">Wind Speed</div>
+      <div class="current-weather__detail-value">{{ windSpeed() }} m/s</div>
+    </div>
+    <div class="current-weather__detail-card">
+      <div class="current-weather__detail-label">Humidity</div>
+      <div class="current-weather__detail-value">{{ humidity() }}%</div>
+    </div>
+    <div class="current-weather__detail-card">
+      <div class="current-weather__detail-label">Pressure</div>
+      <div class="current-weather__detail-value">{{ pressure() }} mmHg</div>
+    </div>
+    <div class="current-weather__detail-card">
+      <div class="current-weather__detail-label">Cloudiness</div>
+      <div class="current-weather__detail-value">{{ cloudiness() }}</div>
+    </div>
+    <div class="current-weather__detail-card">
+      <div class="current-weather__detail-label">Sunrise</div>
+      <div class="current-weather__detail-value">{{ sunrise() }}</div>
+    </div>
+    <div class="current-weather__detail-card">
+      <div class="current-weather__detail-label">Precipitation</div>
+      <div class="current-weather__detail-value">{{ precipitation() }} mm</div>
+    </div>
+    <div class="current-weather__detail-card">
+      <div class="current-weather__detail-label">Sunset</div>
+      <div class="current-weather__detail-value">{{ sunset() }}</div>
+    </div>
+  </div>
 </div>
