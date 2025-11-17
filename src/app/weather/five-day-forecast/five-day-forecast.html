@@ -1,4 +1,21 @@
 <div class="five-day-forecast">
-  <h2>5-Day Forecast</h2>
-  <p>Dummy data will go here</p>
+  <div class="cards">
+    @for (day of forecastDays(); track day.date) {
+      <div class="card">
+        <div class="day" [class.day--today]="day.day === 'Today'">
+          {{ day.day }}
+        </div>
+        <div class="date">{{ day.date }}</div>
+        <img 
+          [src]="'/images/icons/' + day.icon + '_t@2x.png'" 
+          [alt]="day.day"
+          class="icon-img"
+        />
+        <div class="temps">
+          <div class="temp-high">+{{ day.highTemp }}°C</div>
+          <div class="temp-low">+{{ day.lowTemp }}°C</div>
+        </div>
+      </div>
+    }
+  </div>
 </div>

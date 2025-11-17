@@ -7,14 +7,14 @@
   box-shadow: $shadow-sm;
   margin-bottom: 2rem;
 
-  &__content {
+  .content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0;
   }
 
-  &__title {
+  .title {
     font-size: $font-size-xl;
     font-weight: $font-weight-semibold;
     color: $color-text-primary;

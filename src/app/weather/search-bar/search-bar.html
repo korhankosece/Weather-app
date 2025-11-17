@@ -2,6 +2,7 @@
   <app-input
     placeholder="Search city or zip code..."
     [value]="searchTerm()"
+    [showSearchIcon]="true"
     (valueChange)="onValueChange($event)"
     (enterKey)="handleSearch()"
   />

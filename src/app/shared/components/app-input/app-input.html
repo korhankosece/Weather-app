@@ -1,9 +1,15 @@
-<input
-  [type]="type"
-  [placeholder]="placeholder"
-  [value]="value"
-  [disabled]="disabled"
-  (input)="onInput($event)"
-  (keyup)="onKeyUp($event)"
-  class="app-input"
-/>
+<div class="app-input-wrapper">
+  <input
+    [type]="type"
+    [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onInput($event)"
+    (keyup)="onKeyUp($event)"
+    class="app-input"
+    [class.app-input--with-icon]="showSearchIcon"
+  />
+  @if (showSearchIcon) {
+    <app-search-icon class="search-icon" />
+  }
+</div>

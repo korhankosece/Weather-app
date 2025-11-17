@@ -8,21 +8,21 @@
   overflow: hidden;
   color: $color-white;
 
-  &__main {
+  .main {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2.5rem;
   }
 
-  &__time {
+  .time {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     flex: 1;
   }
 
-  &__location {
+  .location {
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
     color: $color-white-80;
@@ -30,19 +30,19 @@
     text-transform: capitalize;
   }
 
-  &__current-time {
+  .current-time {
     font-size: $font-size-3xl;
     font-weight: $font-weight-bold;
     margin-bottom: 0.5rem;
     line-height: 1.2;
   }
 
-  &__current-date {
+  .current-date {
     font-size: $font-size-lg;
     font-weight: $font-weight-medium;
   }
 
-  &__center {
+  .center {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +50,7 @@
     text-align: center;
   }
 
-  &__temperature {
+  .temperature {
     font-size: 5rem;
     font-weight: $font-weight-bold;
     margin-bottom: 0.75rem;
@@ -58,53 +58,53 @@
     letter-spacing: -0.02em;
   }
 
-  &__city {
+  .city {
     font-size: $font-size-2xl;
     font-weight: $font-weight-semibold;
     margin-bottom: 0.5rem;
   }
 
-  &__description {
+  .description {
     font-size: $font-size-lg;
     color: $color-white-90;
     text-transform: capitalize;
     font-weight: $font-weight-medium;
   }
 
-  &__icon {
+  .icon {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex: 1;
   }
 
-  &__icon-img {
+  .icon-img {
     width: 150px;
     height: 150px;
     object-fit: contain;
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
   }
 
-  &__divider {
+  .divider {
     width: 100%;
     height: 1px;
     background-color: $color-white-30;
     margin: 1.5rem 0;
   }
 
-  &__details {
+  .details {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
 
-  &__detail-card {
+  .detail-card {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
   }
 
-  &__detail-label {
+  .detail-label {
     font-size: 0.625rem;
     font-weight: $font-weight-medium;
     color: $color-white-70;
@@ -112,9 +112,67 @@
     letter-spacing: 0.05em;
   }
 
-  &__detail-value {
+  .detail-value {
     font-size: $font-size-base;
     font-weight: $font-weight-semibold;
     line-height: 1.3;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    .main {
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .time {
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .center {
+      width: 100%;
+    }
+
+    .icon {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .icon-img {
+      width: 120px;
+      height: 120px;
+    }
+
+    .temperature {
+      font-size: 4rem;
+    }
+
+    .details {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+
+    .temperature {
+      font-size: 3.5rem;
+    }
+
+    .city {
+      font-size: $font-size-xl;
+    }
+
+    .current-time {
+      font-size: $font-size-2xl;
+    }
+
+    .details {
+      grid-template-columns: 1fr;
+    }
   }
 }

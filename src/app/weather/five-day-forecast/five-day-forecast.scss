@@ -1,11 +1,77 @@
+@use '../../shared/styles/theme' as *;
+
 .five-day-forecast {
   padding: 2rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  background: white;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-background;
 
-  h2 {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .card {
+    flex: 1;
+    min-width: 120px;
+    max-width: 180px;
+    padding: 1rem 0.75rem;
+    border: 1px solid $color-border-light;
+    border-radius: $radius-md;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: box-shadow $transition-base;
+
+    &:hover {
+      box-shadow: $shadow-md;
+    }
+  }
+
+  .day {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: 0.5rem;
+
+    &--today {
+      color: $color-primary;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  .date {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
     margin-bottom: 1rem;
-    color: #333;
+  }
+
+  .icon-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+
+  .temps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+  }
+
+  .temp-high {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+
+  .temp-low {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
   }
 }

@@ -1,11 +1,73 @@
+@use '../../shared/styles/theme' as *;
+
 .hourly-forecast {
   padding: 2rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  background: white;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: $color-background;
 
-  h2 {
-    margin-bottom: 1rem;
-    color: #333;
+  .container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: $color-border-light transparent;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-border-light;
+      border-radius: $radius-full;
+    }
+  }
+
+  .scroll {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    min-width: min-content;
+  }
+
+  .card {
+    flex-shrink: 0;
+    min-width: 80px;
+    padding: 1rem 0.5rem;
+    border: 1px solid $color-border-light;
+    border-radius: $radius-md;
+    background: $color-background;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    transition: box-shadow $transition-base;
+
+    &:hover {
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  .time {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+
+  .temp {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
   }
 }

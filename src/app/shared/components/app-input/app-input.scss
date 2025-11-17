@@ -1,5 +1,10 @@
 @use '../../styles/theme' as *;
 
+.app-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .app-input {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -7,6 +12,10 @@
   border-radius: $radius-sm;
   font-size: $font-size-base;
   transition: border-color $transition-base;
+
+  &--with-icon {
+    padding-right: 2.5rem;
+  }
 
   &:focus {
     outline: none;
@@ -17,4 +26,16 @@
     background-color: $color-background-light;
     cursor: not-allowed;
   }
+}
+
+.search-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  color: $color-text-secondary;
+  flex-shrink: 0;
 }

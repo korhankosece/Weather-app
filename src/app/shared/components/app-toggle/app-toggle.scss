@@ -5,14 +5,14 @@
   align-items: center;
   gap: 0.5rem;
 
-  &__label {
+  .label {
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
     color: $color-text-secondary;
     user-select: none;
   }
 
-  &__switch {
+  .switch {
     position: relative;
     width: 2.5rem;
     height: 1.5rem;
@@ -40,13 +40,13 @@
         background: $color-primary-dark;
       }
 
-      .app-toggle__thumb {
+      .thumb {
         transform: translateX(1rem);
       }
     }
   }
 
-  &__thumb {
+  .thumb {
     position: absolute;
     top: 0.125rem;
     left: 0.125rem;

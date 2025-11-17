@@ -1,4 +1,17 @@
 <div class="hourly-forecast">
-  <h2>Hourly Forecast</h2>
-  <p>Dummy data will go here</p>
+  <div class="container">
+    <div class="scroll">
+      @for (hour of hourlyData(); track hour.time) {
+        <div class="card">
+          <div class="time">{{ hour.time }}</div>
+          <img 
+            [src]="'/images/icons/' + hour.icon + '_t@2x.png'" 
+            [alt]="hour.time"
+            class="icon"
+          />
+          <div class="temp">{{ hour.temperature }}°C</div>
+        </div>
+      }
+    </div>
+  </div>
 </div>
