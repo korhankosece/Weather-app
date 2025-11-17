@@ -1,0 +1,8 @@
+<div class="search-bar">
+  <app-input
+    placeholder="Search city or zip code..."
+    [value]="searchTerm()"
+    (valueChange)="onValueChange($event)"
+    (enterKey)="handleSearch()"
+  />
+</div>

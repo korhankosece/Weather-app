@@ -1,0 +1,13 @@
+<div class="app-toggle">
+  <span class="app-toggle__label">{{ leftLabel }}</span>
+  <button
+    type="button"
+    class="app-toggle__switch"
+    [class.app-toggle__switch--active]="checked()"
+    (click)="toggle()"
+    [attr.aria-label]="checked() ? 'Toggle off' : 'Toggle on'"
+  >
+    <span class="app-toggle__thumb"></span>
+  </button>
+  <span class="app-toggle__label">{{ rightLabel }}</span>
+</div>

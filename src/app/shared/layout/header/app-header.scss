@@ -1,0 +1,22 @@
+@use '../../styles/theme' as *;
+
+.header {
+  width: 100%;
+  background: $color-background;
+  border-bottom: 1px solid $color-border;
+  box-shadow: $shadow-sm;
+  margin-bottom: 2rem;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+  }
+}

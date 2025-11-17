@@ -1,0 +1,5 @@
+@forward './variables';
+@use './variables' as *;
+
+// This file can be used to export all theme-related styles
+// Components can use this file to access variables
