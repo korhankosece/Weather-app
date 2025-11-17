@@ -6,20 +6,52 @@
   border-radius: $radius-lg;
   background: $color-background;
 
-  .cards {
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin: 0;
+  }
+
+  .container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: $color-border-light transparent;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $color-border-light;
+      border-radius: $radius-full;
+    }
+  }
+
+  .scroll {
     display: flex;
-    flex-wrap: wrap;
     gap: 1rem;
-    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    min-width: min-content;
   }
 
   .card {
-    flex: 1;
-    min-width: 120px;
-    max-width: 180px;
+    flex-shrink: 0;
+    min-width: 140px;
     padding: 1rem 0.75rem;
     border: 1px solid $color-border-light;
     border-radius: $radius-md;
+    background: $color-background;
     display: flex;
     flex-direction: column;
     align-items: center;

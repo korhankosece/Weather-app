@@ -1,17 +1,22 @@
-<div class="hourly-forecast">
-  <div class="container">
-    <div class="scroll">
-      @for (hour of hourlyData(); track hour.time) {
-        <div class="card">
-          <div class="time">{{ hour.time }}</div>
-          <img 
-            [src]="'/images/icons/' + hour.icon + '_t@2x.png'" 
-            [alt]="hour.time"
-            class="icon"
-          />
-          <div class="temp">{{ hour.temperature }}°C</div>
-        </div>
-      }
+@if (hourlyData().length > 0) {
+  <div class="hourly-forecast">
+    <div class="header">
+      <h3 class="title">Hourly Forecast</h3>
+    </div>
+    <div class="container">
+      <div class="scroll">
+        @for (hour of hourlyData(); track hour.dt) {
+          <div class="card">
+            <div class="time">{{ hour.time }}</div>
+            <img 
+              [src]="'/images/icons/' + hour.icon + '_t@2x.png'" 
+              [alt]="hour.time"
+              class="icon"
+            />
+            <div class="temp">{{ hour.temperature }}°C</div>
+          </div>
+        }
+      </div>
     </div>
   </div>
-</div>
+}

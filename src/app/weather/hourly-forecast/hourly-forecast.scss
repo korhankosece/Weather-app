@@ -6,6 +6,17 @@
   border-radius: $radius-lg;
   background: $color-background;
 
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin: 0;
+  }
+
   .container {
     overflow-x: auto;
     overflow-y: hidden;

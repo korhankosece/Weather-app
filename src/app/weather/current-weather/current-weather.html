@@ -1,59 +1,61 @@
-<div class="current-weather" [style.background]="backgroundGradient()">
-  <div class="main">
-    <div class="time">
-      <div class="location">{{ region() }}, {{ country() }}</div>
-      <div class="current-time">{{ currentTime() }}</div>
-      <div class="current-date">{{ currentDate() }}</div>
-    </div>
+@if (currentWeather(); as weather) {
+  <div class="current-weather" [style.background]="backgroundGradient()">
+    <div class="main">
+      <div class="time">
+        <div class="location">{{ weather.country }}</div>
+        <div class="current-time">{{ weather.currentTime }} <span class="local-indicator">Local Time</span></div>
+        <div class="current-date">{{ weather.currentDate }}</div>
+      </div>
 
-    <div class="center">
-      <div class="city">{{ city() }}</div>
-      <div class="temperature">{{ temperature() }}°c</div>
-      <div class="description">{{ description() }}</div>
-    </div>
+      <div class="center">
+        <div class="city">{{ weather.city }}</div>
+        <div class="temperature">{{ weather.temperature }}°c</div>
+        <div class="description">{{ weather.description }}</div>
+      </div>
 
-    <div class="icon">
-      <img 
-        [src]="'/images/icons/' + weatherIcon() + '_t@4x.png'" 
-        [alt]="description()"
-        class="icon-img"
-      />
+      <div class="icon">
+        <img 
+          [src]="'/images/icons/' + weather.weatherIcon + '_t@4x.png'" 
+          [alt]="weather.description"
+          class="icon-img"
+        />
+      </div>
     </div>
-  </div>
 
   <div class="divider"></div>
   <div class="details">
     <div class="detail-card">
       <div class="detail-label">Wind</div>
-      <div class="detail-value">{{ windDirection() }}, gentle breeze</div>
+      <div class="detail-value">{{ weather.windDirection }}</div>
     </div>
     <div class="detail-card">
       <div class="detail-label">Wind Speed</div>
-      <div class="detail-value">{{ windSpeed() }} m/s</div>
+      <div class="detail-value">{{ weather.windSpeed }} m/s</div>
     </div>
     <div class="detail-card">
       <div class="detail-label">Humidity</div>
-      <div class="detail-value">{{ humidity() }}%</div>
+      <div class="detail-value">{{ weather.humidity }}%</div>
     </div>
     <div class="detail-card">
       <div class="detail-label">Pressure</div>
-      <div class="detail-value">{{ pressure() }} mmHg</div>
+      <div class="detail-value">{{ weather.pressure }} mmHg</div>
     </div>
     <div class="detail-card">
       <div class="detail-label">Cloudiness</div>
-      <div class="detail-value">{{ cloudiness() }}</div>
+      <div class="detail-value">{{ weather.cloudiness }}</div>
     </div>
     <div class="detail-card">
       <div class="detail-label">Sunrise</div>
-      <div class="detail-value">{{ sunrise() }}</div>
+      <div class="detail-value">{{ weather.sunrise }}</div>
     </div>
     <div class="detail-card">
       <div class="detail-label">Precipitation</div>
-      <div class="detail-value">{{ precipitation() }} mm</div>
+      <div class="detail-value">{{ weather.precipitation }} mm</div>
     </div>
     <div class="detail-card">
       <div class="detail-label">Sunset</div>
-      <div class="detail-value">{{ sunset() }}</div>
+      <div class="detail-value">{{ weather.sunset }}</div>
     </div>
   </div>
-</div>
+  </div>
+}

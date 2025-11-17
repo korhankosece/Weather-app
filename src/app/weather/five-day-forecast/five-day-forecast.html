@@ -1,21 +1,28 @@
-<div class="five-day-forecast">
-  <div class="cards">
-    @for (day of forecastDays(); track day.date) {
-      <div class="card">
-        <div class="day" [class.day--today]="day.day === 'Today'">
-          {{ day.day }}
-        </div>
-        <div class="date">{{ day.date }}</div>
-        <img 
-          [src]="'/images/icons/' + day.icon + '_t@2x.png'" 
-          [alt]="day.day"
-          class="icon-img"
-        />
-        <div class="temps">
-          <div class="temp-high">+{{ day.highTemp }}°C</div>
-          <div class="temp-low">+{{ day.lowTemp }}°C</div>
-        </div>
+@if (forecastDays().length > 0) {
+  <div class="five-day-forecast">
+    <div class="header">
+      <h3 class="title">5-Day Forecast</h3>
+    </div>
+    <div class="container">
+      <div class="scroll">
+        @for (day of forecastDays(); track day.dt) {
+          <div class="card">
+            <div class="day" [class.day--today]="day.day === 'Today'">
+              {{ day.day }}
+            </div>
+            <div class="date">{{ day.date }}</div>
+            <img 
+              [src]="'/images/icons/' + day.icon + '_t@2x.png'" 
+              [alt]="day.day"
+              class="icon-img"
+            />
+            <div class="temps">
+              <div class="temp-high">+{{ day.highTemp }}°C</div>
+              <div class="temp-low">+{{ day.lowTemp }}°C</div>
+            </div>
+          </div>
+        }
       </div>
-    }
+    </div>
   </div>
-</div>
+}
