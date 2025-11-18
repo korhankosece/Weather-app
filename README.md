@@ -104,6 +104,10 @@ The deployment architecture ensures API keys remain secure on the backend and ne
 - `npm run build` - Build for production
 - `npm test` - Run unit tests
 
+## 🌐 Live Demo
+
+The application is deployed on Azure Static Web Apps.
+
 ## 📄 License
 
 This project is part of an interview case study.
