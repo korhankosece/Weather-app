@@ -1,16 +1,20 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+
 import { Observable, shareReplay } from 'rxjs';
+
 import { CurrentWeather, FiveDayForecast } from '../models/weather.models';
+
 import { parseSearchQuery } from '../utils/weather.utils';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherDatasource {
   private http = inject(HttpClient);
-  private apiKey = 'ee1e03ded7947e88a628a946247d8cce'; // TODO: Move to environment variables
-  private baseUrl = 'https://api.openweathermap.org/data/2.5';
+  private apiKey = environment.openWeatherApiKey;
+  private baseUrl = environment.openWeatherApiUrl;
 
   private currentWeatherCache = new Map<string, Observable<CurrentWeather>>();
   private forecastCache = new Map<string, Observable<FiveDayForecast>>();
@@ -23,12 +27,54 @@ export class WeatherDatasource {
     );
   }
 
+  getCurrentWeatherByCoords(lat: number, lon: number): Observable<CurrentWeather> {
+    const key = `${lat},${lon}`;
+    if (this.currentWeatherCache.has(key)) {
+      return this.currentWeatherCache.get(key)!;
+    }
+
+    const params = new HttpParams()
+      .set('appid', this.apiKey)
+      .set('units', 'metric')
+      .set('lang', 'en')
+      .set('lat', lat.toString())
+      .set('lon', lon.toString());
+
+    const request$ = this.http
+      .get<CurrentWeather>(`${this.baseUrl}/weather`, { params })
+      .pipe(shareReplay(1));
+
+    this.currentWeatherCache.set(key, request$);
+    return request$;
+  }
+
   getFiveDayForecast(query: string): Observable<FiveDayForecast> {
     return this.getCachedRequest(
       query,
       this.forecastCache,
       `${this.baseUrl}/forecast`
     );
+  }
+
+  getFiveDayForecastByCoords(lat: number, lon: number): Observable<FiveDayForecast> {
+    const key = `${lat},${lon}`;
+    if (this.forecastCache.has(key)) {
+      return this.forecastCache.get(key)!;
+    }
+
+    const params = new HttpParams()
+      .set('appid', this.apiKey)
+      .set('units', 'metric')
+      .set('lang', 'en')
+      .set('lat', lat.toString())
+      .set('lon', lon.toString());
+
+    const request$ = this.http
+      .get<FiveDayForecast>(`${this.baseUrl}/forecast`, { params })
+      .pipe(shareReplay(1));
+
+    this.forecastCache.set(key, request$);
+    return request$;
   }
 
   private getCachedRequest<T>(

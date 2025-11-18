@@ -1,4 +1,5 @@
 import { Component, Input, output } from '@angular/core';
+
 import { SearchIcon } from '../icons/search-icon/search-icon';
 
 @Component({

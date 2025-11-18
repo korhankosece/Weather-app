@@ -1,12 +1,11 @@
 <div class="dashboard-container">
   <app-search-bar (onSearch)="onSearch($event)" />
 
-  @if (weatherService.loading()) {
-    <div class="loading">Loading weather data...</div>
-  }
-
   @if (weatherService.error()) {
-    <div class="error">{{ weatherService.error() }}</div>
+    <app-error-banner 
+      [message]="weatherService.error()!" 
+      (onDismiss)="dismissError()"
+    />
   }
 
   <app-current-weather />

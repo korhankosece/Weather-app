@@ -1,4 +1,6 @@
-@if (currentWeather(); as weather) {
+@if (weatherService.loading()) {
+  <app-skeleton height="400px" />
+} @else if (currentWeather(); as weather) {
   <div class="current-weather" [style.background]="backgroundGradient()">
     <div class="main">
       <div class="time">
@@ -7,11 +9,11 @@
         <div class="current-date">{{ weather.currentDate }}</div>
       </div>
 
-      <div class="center">
-        <div class="city">{{ weather.city }}</div>
-        <div class="temperature">{{ weather.temperature }}°c</div>
-        <div class="description">{{ weather.description }}</div>
-      </div>
+          <div class="center">
+            <div class="city">{{ weather.city }}</div>
+            <div class="temperature">{{ displayTemperature() }}{{ temperatureSymbol() }}</div>
+            <div class="description">{{ weather.description }}</div>
+          </div>
 
       <div class="icon">
         <img 

@@ -1,59 +1,111 @@
-# AngularWeatherApp
+# Weather Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.10.
+A modern, interactive weather dashboard built with Angular 20, featuring real-time weather data, geolocation support, and a sleek user interface.
 
-## Development server
+## 🌟 Features
 
-To start a local development server, run:
+- **Smart Search**: Search by city name or zip code (e.g., "Istanbul", "34000", "10001,US")
+- **Current Weather**: Temperature, humidity, wind speed, pressure, precipitation, and more
+- **Hourly Forecast**: 3-hour interval forecasts for the next 24 hours
+- **5-Day Forecast**: Extended weather predictions with high/low temperatures
+- **Temperature Units**: Toggle between Celsius and Fahrenheit
+- **Geolocation**: Automatic location detection on initial load
+- **Dynamic Backgrounds**: Weather-specific gradient backgrounds
+- **Responsive Design**: Mobile-first approach with smooth animations
 
-```bash
-ng serve
-```
+## 🚀 Getting Started
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Prerequisites
 
-## Code scaffolding
+- Node.js (v18.0.0 or higher)
+- npm or yarn
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Installation
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Running the Development Server
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+The application will start at `http://localhost:4200`
 
-For end-to-end (e2e) testing, run:
+### Building for Production
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🛠️ Tech Stack
 
-## Additional Resources
+- **Angular 20.3** with Standalone Components
+- **TypeScript** for type safety
+- **RxJS** for reactive programming
+- **Angular Signals** for state management
+- **SCSS** with custom theming
+- **OpenWeatherMap API** for weather data
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── shared/              # Shared components, services, utilities
+│   │   ├── components/      # Reusable UI components
+│   │   ├── layout/          # Layout components
+│   │   ├── services/        # Global services
+│   │   ├── styles/          # Theme and variables
+│   │   └── utils/           # Helper functions
+│   └── weather/             # Weather feature module
+│       ├── components/      # Weather-specific components
+│       ├── mappers/         # Data transformation
+│       ├── models/          # TypeScript interfaces
+│       ├── services/        # API and state management
+│       └── utils/           # Weather utilities
+└── public/                  # Static assets
+```
+
+## 🏗️ Architecture
+
+- **Datasource Layer**: HTTP requests and caching
+- **Service Layer**: State management with Angular Signals
+- **Mapper Layer**: API response transformation
+- **Component Layer**: Presentational UI components
+
+## 📊 Bundle Size
+
+Production build metrics:
+
+| File | Size | Gzipped |
+|------|------|---------|
+| main.js | 177.41 kB | **49.69 kB** |
+| polyfills.js | 34.59 kB | **11.33 kB** |
+| styles.css | 278 bytes | 278 bytes |
+| **Total** | **212.28 kB** | **61.30 kB** |
+
+## 🚢 Deployment
+
+### Azure Static Web Apps (Coming Soon)
+
+The application will be deployed with:
+- GitHub Actions for CI/CD
+- Azure Functions for secure API proxy
+- Environment variables in Azure Portal
+
+## 📝 Available Scripts
+
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run unit tests
+
+## 📄 License
+
+This project is part of an interview case study.
+
+## 🙏 Acknowledgments
+
+Weather data provided by [OpenWeatherMap](https://openweathermap.org/)

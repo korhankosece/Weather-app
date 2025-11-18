@@ -1,11 +1,13 @@
-@if (hourlyData().length > 0) {
+@if (weatherService.loading()) {
+  <app-skeleton height="250px" />
+} @else if (hourlyData().length > 0) {
   <div class="hourly-forecast">
     <div class="header">
       <h3 class="title">Hourly Forecast</h3>
     </div>
     <div class="container">
       <div class="scroll">
-        @for (hour of hourlyData(); track hour.dt) {
+        @for (hour of displayHourlyData(); track hour.dt) {
           <div class="card">
             <div class="time">{{ hour.time }}</div>
             <img 
@@ -13,7 +15,7 @@
               [alt]="hour.time"
               class="icon"
             />
-            <div class="temp">{{ hour.temperature }}°C</div>
+            <div class="temp">{{ hour.displayTemperature }}{{ temperatureSymbol() }}</div>
           </div>
         }
       </div>

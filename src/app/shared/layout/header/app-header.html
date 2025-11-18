@@ -2,7 +2,11 @@
   <app-container>
     <div class="content">
       <span class="title">Weather Forecast</span>
-      <app-toggle leftLabel="°C" rightLabel="°F" />
+      <app-toggle 
+        leftLabel="°C" 
+        rightLabel="°F"
+        (onToggle)="onToggleUnit($event)"
+      />
     </div>
   </app-container>
 </header>

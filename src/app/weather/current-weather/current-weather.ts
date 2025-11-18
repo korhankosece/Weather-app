@@ -1,5 +1,10 @@
 import { Component, inject, computed } from '@angular/core';
+
 import { WeatherService } from '../services/weather.service';
+
+import { AppSkeleton } from '../../shared/components/app-skeleton/app-skeleton';
+
+import { convertTemperature, getTemperatureSymbol } from '../../shared/utils/temperature.utils';
 
 const WEATHER_GRADIENTS: { [key: string]: string } = {
   '01d': 'linear-gradient(135deg, #4facfe 0%, #feca57 100%)',
@@ -18,13 +23,14 @@ const DEFAULT_GRADIENT = 'linear-gradient(135deg, #7196A9 0%, #5a7a8a 100%)';
 
 @Component({
   selector: 'app-current-weather',
-  imports: [],
+  imports: [AppSkeleton],
   templateUrl: './current-weather.html',
   styleUrl: './current-weather.scss',
 })
 export class CurrentWeather {
   protected weatherService = inject(WeatherService);
   currentWeather = this.weatherService.currentWeather;
+  temperatureUnit = this.weatherService.temperatureUnit;
 
   backgroundGradient = computed(() => {
     const icon = this.currentWeather()?.weatherIcon ?? '01d';
@@ -34,4 +40,20 @@ export class CurrentWeather {
     const iconCode = icon.substring(0, 2);
     return WEATHER_GRADIENTS[iconCode] || DEFAULT_GRADIENT;
   });
+
+  displayTemperature = computed(() => {
+    const temp = this.currentWeather()?.temperature;
+    const unit = this.temperatureUnit();
+    if (temp === undefined) return '';
+    return convertTemperature(temp, 'celsius', unit);
+  });
+
+  displayFeelsLike = computed(() => {
+    const temp = this.currentWeather()?.feelsLike;
+    const unit = this.temperatureUnit();
+    if (temp === undefined) return '';
+    return convertTemperature(temp, 'celsius', unit);
+  });
+
+  temperatureSymbol = computed(() => getTemperatureSymbol(this.temperatureUnit()));
 }
