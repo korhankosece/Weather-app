@@ -6,15 +6,13 @@ import { Observable, shareReplay } from 'rxjs';
 import { CurrentWeather, FiveDayForecast } from '../models/weather.models';
 
 import { parseSearchQuery } from '../utils/weather.utils';
-import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherDatasource {
   private http = inject(HttpClient);
-  private apiKey = environment.openWeatherApiKey;
-  private baseUrl = environment.openWeatherApiUrl;
+  private apiUrl = '/api/weather';
 
   private currentWeatherCache = new Map<string, Observable<CurrentWeather>>();
   private forecastCache = new Map<string, Observable<FiveDayForecast>>();
@@ -23,7 +21,7 @@ export class WeatherDatasource {
     return this.getCachedRequest(
       query,
       this.currentWeatherCache,
-      `${this.baseUrl}/weather`
+      'weather'
     );
   }
 
@@ -34,14 +32,12 @@ export class WeatherDatasource {
     }
 
     const params = new HttpParams()
-      .set('appid', this.apiKey)
-      .set('units', 'metric')
-      .set('lang', 'en')
+      .set('endpoint', 'weather')
       .set('lat', lat.toString())
       .set('lon', lon.toString());
 
     const request$ = this.http
-      .get<CurrentWeather>(`${this.baseUrl}/weather`, { params })
+      .get<CurrentWeather>(this.apiUrl, { params })
       .pipe(shareReplay(1));
 
     this.currentWeatherCache.set(key, request$);
@@ -52,7 +48,7 @@ export class WeatherDatasource {
     return this.getCachedRequest(
       query,
       this.forecastCache,
-      `${this.baseUrl}/forecast`
+      'forecast'
     );
   }
 
@@ -63,14 +59,12 @@ export class WeatherDatasource {
     }
 
     const params = new HttpParams()
-      .set('appid', this.apiKey)
-      .set('units', 'metric')
-      .set('lang', 'en')
+      .set('endpoint', 'forecast')
       .set('lat', lat.toString())
       .set('lon', lon.toString());
 
     const request$ = this.http
-      .get<FiveDayForecast>(`${this.baseUrl}/forecast`, { params })
+      .get<FiveDayForecast>(this.apiUrl, { params })
       .pipe(shareReplay(1));
 
     this.forecastCache.set(key, request$);
@@ -88,21 +82,19 @@ export class WeatherDatasource {
       return cache.get(normalizedQuery)!;
     }
 
-    const params = this.buildParams(query);
-    const request$ = this.http.get<T>(endpoint, { params }).pipe(shareReplay(1));
+    const params = this.buildParams(query, endpoint);
+    const request$ = this.http.get<T>(this.apiUrl, { params }).pipe(shareReplay(1));
 
     cache.set(normalizedQuery, request$);
     return request$;
   }
 
-  private buildParams(query: string): HttpParams {
+  private buildParams(query: string, endpoint: string): HttpParams {
     const { isZipCode, formattedQuery } = parseSearchQuery(query);
     const paramKey = isZipCode ? 'zip' : 'q';
 
     return new HttpParams()
-      .set('appid', this.apiKey)
-      .set('units', 'metric')
-      .set('lang', 'en')
+      .set('endpoint', endpoint)
       .set(paramKey, formattedQuery);
   }
 

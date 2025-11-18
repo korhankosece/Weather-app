@@ -89,12 +89,14 @@ Production build metrics:
 
 ## 🚢 Deployment
 
-### Azure Static Web Apps (Coming Soon)
+### Azure Static Web Apps
 
-The application will be deployed with:
-- GitHub Actions for CI/CD
-- Azure Functions for secure API proxy
-- Environment variables in Azure Portal
+The application is configured for deployment with:
+- **GitHub Actions** workflow for automated CI/CD
+- **Azure Functions** API proxy for secure API key management
+- Environment variables configured in Azure Portal
+
+The deployment architecture ensures API keys remain secure on the backend and never exposed to client-side code.
 
 ## 📝 Available Scripts
 

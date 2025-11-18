@@ -1,0 +1,9 @@
+{
+  "name": "weather-api",
+  "version": "1.0.0",
+  "description": "Azure Functions API proxy for OpenWeatherMap",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {}
+}
